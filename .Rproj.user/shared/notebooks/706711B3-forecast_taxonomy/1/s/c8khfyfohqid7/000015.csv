@@ -1,6 +1,0 @@
-"0",""
-"0","ansett %>% "
-"0","  filter(Airports == ""SYD-BNE"") %>%"
-"0","    autoplot()"
-"2","Plot variable not specified, automatically selected `.vars = Passengers`
-"
