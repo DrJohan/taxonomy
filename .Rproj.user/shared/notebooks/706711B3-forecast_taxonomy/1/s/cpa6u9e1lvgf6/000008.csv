@@ -1,0 +1,7 @@
+"0",""
+"0",""
+"0","gapless_ansett <- ansett %>% "
+"0","                      filter(Airports == ""SYD-BNE"") %>%"
+"0","                      fill_gaps()"
+"0",""
+"0","head(gapless_ansett)"
