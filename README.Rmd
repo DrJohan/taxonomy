@@ -1,0 +1,16 @@
+---
+title: "README"
+author: "Steph Stammel"
+date: "21/11/2020"
+output: html_document
+---
+
+## Decisions vs defaults: a taxonomy of data science patterns
+
+This repository contains the material for the Malaysian confeRence 21/22 November, 2020.
+
+You can fork the Shiny app, _Exploring Time Series Features_ or [you can run it directly online](https://rexanalytics.shinyapps.io/taxonomy_forecast/).
+
+Slides are `malaysian_confeRence_presentation.key` and the rest is just materials I used to put the talk together.
+
+Feel free to reach out and thanks for having me (remotely) Malaysia!
