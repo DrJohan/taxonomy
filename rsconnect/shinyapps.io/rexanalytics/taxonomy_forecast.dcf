@@ -1,0 +1,13 @@
+name: taxonomy_forecast
+title: taxonomy_forecast
+username:
+account: rexanalytics
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3278578
+bundleId: 3888212
+url: https://rexanalytics.shinyapps.io/taxonomy_forecast/
+when: 1605962373.7313
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: forecast_taxonomy.html|forecast_taxonomy.Rmd|malaysian_confeRence_presentation.key|data/.DS_Store|data/covid_data.xlsx|data/covid.RDS|data-raw/.gitignore.R|data-raw/owid-covid-data.xlsx|data-raw/process_covid_data.R|images

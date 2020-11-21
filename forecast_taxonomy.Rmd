@@ -91,9 +91,10 @@ www.steph.ai
 
 ## We are an open source software community {.build}
 
-```{r echo = TRUE, eval = TRUE, messages = FALSE, include = FALSE}
-library(feasts)
+```{r echo = TRUE, eval = TRUE, messages = FALSE, include = TRUE}
 library(tsibble)
+library(feasts)
+library(fable)
 library(tsibbledata)
 library(tidyverse)
 ```
@@ -133,6 +134,18 @@ gapless_ansett%>%
       components()%>%
       autoplot()
 ```
+## Related organisms can appear very different
+```{r echo = TRUE}
+
+gapless_ansett %>% filter(Class == "First") %>% has_gaps()
+
+gapless_ansett%>%
+      filter(Class == "First") %>%
+      model(STL(Passengers ~ trend(window = Inf)))%>%
+      components()%>%
+      autoplot()
+```
+
 
 ## There are different tools that show different aspects of our data
 
@@ -147,7 +160,7 @@ gapless_ansett%>%
 - You have the tools in your hand (agency)
 - But how do we intepret these? (literacy)
 
-We start with a curated collection
+We start with a _curated collection_
 
 # Thankyou!
 

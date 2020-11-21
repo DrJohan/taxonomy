@@ -5,6 +5,7 @@
 
 library(shiny)
 library(lubridate)
+library(rlang)
 library(tsibble)
 library(magrittr)
 library(dplyr)
@@ -29,7 +30,7 @@ ui <- fluidPage(
                         choices = c("trend",
                                     "autocorrelation",
                                     "daily seasonal patterns",
-                                    "annual seasonal patterns")),
+                                    "annual seaosnal patterns")),
              
              sliderInput("n_obs",
                          "Choose the number of years",
@@ -51,6 +52,8 @@ ui <- fluidPage(
                                       "month",
                                       "year")),
              numericInput("year", "Choose year to begin", value = 2015),
+             
+            
              
               
                  width = 3   )
@@ -76,7 +79,7 @@ server <- function(input, output, session) {
     
     gen_data <- reactive({
         
-              start <- as.Date(paste(input$year, "-01-01", sep = ""), format = "%Y-%m-%d")
+            start <- as.Date(paste(input$year, "-01-01", sep = ""), format = "%Y-%m-%d")
             finish <-  as.Date(paste(input$n_obs + input$year, "-01-01", sep = ""), format = "%Y-%m-%d")
             dates <- seq(start, finish, by= "days")
             
@@ -85,7 +88,7 @@ server <- function(input, output, session) {
             
             for (i in 2:length(dates)){
                 
-                
+                new_y <- NULL
                 if (input$features == "trend"){
                     new_y <- input$alpha * i +rnorm(1, 0, 1)
                 } else if (input$features == "autocorrelation"){
@@ -94,7 +97,8 @@ server <- function(input, output, session) {
                     day <- lubridate::wday(dates[i])
                     
                     new_y <- DOW_effects[day] +rnorm(1, 0, 1)
-                } else if (input$features == "annual seaosnal patterns"){
+                } else #(input$features == "annual seaosnal patterns"){
+                {
                     month <- lubridate::month(dates[i])
                     new_y <- month_effects[month] + rnorm(1,0,1)
                 }
@@ -120,13 +124,7 @@ server <- function(input, output, session) {
             } else {
                 gen_data_y <- gen_data_y %>% as_tsibble(index = dates)
             }
-            
-           
-        
-        
-        
        
-         gen_data_y
     })
 
     output$data_plot <- renderPlot({
